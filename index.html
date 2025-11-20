@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio Website</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+        body {
+            box-sizing: border-box;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #9393c7 0%, #4a5f98 100%);
+        }
+        
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(91, 199, 183, 0.1);
+        }
+        
+        .skill-bar {
+            height: 8px;
+            background: #deecff;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 4px;
+            transition: width 2s ease-in-out;
+        }
+        
+        .nav-link {
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: #667eea;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        .animate-pulse-custom {
+            animation: pulse 2s infinite ease-in-out;
+        }
+        
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        
+        .animate-rotate {
+            animation: rotate 20s linear infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-20px);
+            }
+            60% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        .animate-bounce-custom {
+            animation: bounce 2s infinite;
+        }
+        
+        .section {
+            scroll-margin-top: 80px;
+        }
+        
+        .parallax-bg {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="font-sans text-gray-200 bg-gray-900"><!-- Navigation -->
+  <nav class="fixed top-0 w-full bg-gray-900/90 backdrop-blur-sm shadow-sm z-50 border-b border-gray-800">
+   <div class="max-w-6xl mx-auto px-4 py-4">
+    <div class="flex justify-between items-center">
+     <div class="text-xl font-bold text-gray-200 flex items-center" id="nav-name">
+      <img src="https://i.postimg.cc/D0TkwC2J/561454565.jpg" alt="Logo" class="w-8 h-8 mr-2 animate-rotate">
+      HARSH SAINI 
+     </div>
+     <div class="hidden md:flex space-x-8"><a href="#home" class="nav-link text-gray-400 hover:text-purple-400">Home</a> <a href="#about" class="nav-link text-gray-400 hover:text-purple-400">About</a> <a href="#portfolio" class="nav-link text-gray-400 hover:text-purple-400">Portfolio</a> <a href="#skills" class="nav-link text-gray-400 hover:text-purple-400">Skills</a> <a href="#contact" class="nav-link text-gray-400 hover:text-purple-400">Contact</a>
+     </div><button class="md:hidden text-gray-400" onclick="toggleMobileMenu()">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg></button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-2"><a href="#home" class="block py-2 text-gray-400 hover:text-purple-400">Home</a> <a href="#about" class="block py-2 text-gray-400 hover:text-purple-400">About</a> <a href="#portfolio" class="block py-2 text-gray-400 hover:text-purple-400">Portfolio</a> <a href="#skills" class="block py-2 text-gray-400 hover:text-purple-400">Skills</a> <a href="#contact" class="block py-2 text-gray-400 hover:text-purple-400">Contact</a>
+    </div>
+   </div>
+  </nav><!-- Hero Section -->
+  <section id="home" class="section gradient-bg text-white min-h-screen flex items-center parallax-bg" style="background-image: url('https://via.placeholder.com/1920x1080?text=Hero+Background+Image');">
+   <div class="max-w-6xl mx-auto px-4 py-20">
+    <div class="text-center fade-in-up">
+     <div class="w-32 h-32 mx-auto mb-8 rounded-full bg-white/20 flex items-center justify-center animate-pulse-custom">
+      <img src="https://i.postimg.cc/D0TkwC2J/561454565.jpg" alt="Profile Image" class="rounded-full">
+     </div>
+     <h1 class="text-5xl md:text-6xl font-bold mb-4 animate-bounce-custom" id="hero-name">HARSH SAINI </h1>
+     <h2 class="text-2xl md:text-3xl mb-6 text-white/90" id="hero-title">Data Science</h2>
+     <p class="text-xl mb-8 text-white/80 max-w-2xl mx-auto" id="hero-tagline">Aspiring data scientist with hands-on experience in accounting and SEO optimization</p>
+     <div class="flex flex-col sm:flex-row gap-4 justify-center"><a href="#portfolio" class="bg-white text-purple-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-800 transition-colors">View My Work</a> <a href="#contact" class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-purple-600 transition-colors">Get In Touch</a>
+     </div>
+    </div>
+   </div>
+  </section><!-- About Section -->
+  <section id="about" class="section py-20 bg-gray-800">
+   <div class="max-w-6xl mx-auto px-4">
+    <div class="text-center mb-16">
+     <h2 class="text-4xl font-bold mb-4 text-gray-200">About Me</h2>
+     <div class="w-20 h-1 bg-gradient-to-r from-purple-600 to-blue-600 mx-auto"></div>
+    </div>
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+     <div class="animate-fade-in-up" style="animation-delay: 0.2s;">
+      <img src="#" alt="About Me Image" class="w-full h-80 object-cover rounded-lg shadow-lg">
+     </div>
+     <div>
+      <p class="text-lg text-gray-400 mb-6 leading-relaxed" id="about-description">I have Total 3 year experience I'm a passionate professional with 1 year of experience in accounting and 2 years as a Digital Marketing SEO Specialist. Currently pursuing a Data Science course at UpGrad. I hold a B.Com degree and am currently completing my M.Com. I love learning new technologies and solving real-world problems with data and creativity.</p>
+      <div class="grid grid-cols-2 gap-6">
+       <div>
+        <h4 class="font-semibold text-gray-200 mb-2">Accounting</h4>
+        <p class="text-gray-400">1 Year</p>
+       </div>
+       <div>
+        <h4 class="font-semibold text-gray-200 mb-2">SEO Experience</h4>
+        <p class="text-gray-400">2 Years</p>
+       </div>
+       <div>
+        <h4 class="font-semibold text-gray-200 mb-2">Current Study</h4>
+        <p class="text-gray-400">Data Science</p>
+       </div>
+       <div>
+        <h4 class="font-semibold text-gray-200 mb-2">Institution</h4>
+        <p class="text-gray-400">UpGrad</p>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section><!-- Portfolio Section -->
+  <section id="portfolio" class="section py-20 bg-gray-900">
+   <div class="max-w-6xl mx-auto px-4">
+    <div class="text-center mb-16">
+     <h2 class="text-4xl font-bold mb-4 text-gray-200">My Portfolio</h2>
+     <div class="w-20 h-1 bg-gradient-to-r from-purple-600 to-blue-600 mx-auto mb-6"></div>
+     <p class="text-gray-400 max-w-2xl mx-auto">Here are some of my recent projects that showcase my skills and creativity</p>
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+     <div class="bg-gray-800 rounded-lg shadow-lg overflow-hidden card-hover border border-gray-700">
+      <div class="h-48 bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center">
+       <img src="https://via.placeholder.com/200x200?text=Project1" alt="Project 1 Image" class="w-full h-full object-cover">
+      </div>
+      <div class="p-6">
+       <h3 class="text-xl font-semibold mb-2 text-gray-200">Financial Data Analysis</h3>
+       <p class="text-gray-400 mb-4">Comprehensive financial reporting and budget analysis using Excel and Python</p>
+       <div class="flex flex-wrap gap-2 mb-4"><span class="px-3 py-1 bg-blue-900 text-blue-200 text-sm rounded-full">Excel</span> <span class="px-3 py-1 bg-green-900 text-green-200 text-sm rounded-full">Python</span> <span class="px-3 py-1 bg-purple-900 text-purple-200 text-sm rounded-full">Pandas</span>
+       </div><button class="text-purple-400 hover:text-purple-300 font-semibold">View Project →</button>
+      </div>
+     </div>
+     <div class="bg-gray-800 rounded-lg shadow-lg overflow-hidden card-hover border border-gray-700">
+      <div class="h-48 bg-gradient-to-br from-green-400 to-blue-500 flex items-center justify-center">
+       <img src="https://via.placeholder.com/200x200?text=Project2" alt="Project 2 Image" class="w-full h-full object-cover">
+      </div>
+      <div class="p-6">
+       <h3 class="text-xl font-semibold mb-2 text-gray-200">SEO Campaign Analysis</h3>
+       <p class="text-gray-400 mb-4">Off-page SEO optimization and link building strategies for multiple clients</p>
+       <div class="flex flex-wrap gap-2 mb-4"><span class="px-3 py-1 bg-blue-900 text-blue-200 text-sm rounded-full">SEO</span> <span class="px-3 py-1 bg-yellow-900 text-yellow-200 text-sm rounded-full">Link Building</span> <span class="px-3 py-1 bg-red-900 text-red-200 text-sm rounded-full">Analytics</span>
+       </div><button class="text-purple-400 hover:text-purple-300 font-semibold">View Project →</button>
+      </div>
+     </div>
+     <div class="bg-gray-800 rounded-lg shadow-lg overflow-hidden card-hover border border-gray-700">
+      <div class="h-48 bg-gradient-to-br from-pink-400 to-red-500 flex items-center justify-center">
+       <img src="https://via.placeholder.com/200x200?text=Project3" alt="Project 3 Image" class="w-full h-full object-cover">
+      </div>
+      <div class="p-6">
+       <h3 class="text-xl font-semibold mb-2 text-gray-200">Data Science Capstone</h3>
+       <p class="text-gray-400 mb-4">Machine learning project for customer behavior prediction (UpGrad coursework)</p>
+       <div class="flex flex-wrap gap-2 mb-4"><span class="px-3 py-1 bg-blue-900 text-blue-200 text-sm rounded-full">Python</span> <span class="px-3 py-1 bg-purple-900 text-purple-200 text-sm rounded-full">Scikit-learn</span> <span class="px-3 py-1 bg-gray-700 text-gray-200 text-sm rounded-full">Jupyter</span>
+       </div><button class="text-purple-400 hover:text-purple-300 font-semibold">View Project →</button>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section><!-- Skills Section -->
+  <section id="skills" class="section py-20 bg-gray-800">
+   <div class="max-w-6xl mx-auto px-4">
+    <div class="text-center mb-16">
+     <h2 class="text-4xl font-bold mb-4 text-gray-200">Skills &amp; Expertise</h2>
+     <div class="w-20 h-1 bg-gradient-to-r from-purple-600 to-blue-600 mx-auto mb-6"></div>
+     <p class="text-gray-400 max-w-2xl mx-auto">Technologies and tools I work with to bring ideas to life</p>
+    </div>
+    <div class="grid md:grid-cols-2 gap-12">
+     <div>
+      <h3 class="text-2xl font-semibold mb-6 text-gray-200">Data Science &amp; Analytics</h3>
+      <div class="space-y-4">
+       <div>
+        <div class="flex justify-between mb-2"><span class="text-gray-300">Python</span> <span class="text-gray-500">75%</span>
+        </div>
+        <div class="skill-bar">
+         <div class="skill-progress animate-pulse-custom" style="width: 75%"></div>
+        </div>
+       </div>
+       <div>
+        <div class="flex justify-between mb-2"><span class="text-gray-300">Excel</span> <span class="text-gray-500">70%</span>
+        </div>
+        <div class="skill-bar">
+         <div class="skill-progress animate-pulse-custom" style="width: 70%"></div>
+        </div>
+       </div>
+       <div>
+        <div class="flex justify-between mb-2"><span class="text-gray-300">Power Bi</span> <span class="text-gray-500">65%</span>
+        </div>
+        <div class="skill-bar">
+         <div class="skill-progress animate-pulse-custom" style="width: 65%"></div>
+        </div>
+       </div>
+       <div>
+        <div class="flex justify-between mb-2"><span class="text-gray-300">SQL / Database</span> <span class="text-gray-500">45%</span>
+        </div>
+        <div class="skill-bar">
+         <div class="skill-progress animate-pulse-custom" style="width: 45%"></div>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div>
+      <h3 class="text-2xl font-semibold mb-6 text-gray-200">Business &amp; Marketing</h3>
+      <div class="space-y-4">
+       <div>
+        <div class="flex justify-between mb-2"><span class="text-gray-300">SEO Off-Page</span> <span class="text-gray-500">85%</span>
+        </div>
+        <div class="skill-bar">
+         <div class="skill-progress animate-pulse-custom" style="width: 85%"></div>
+        </div>
+       </div>
+       <div>
+        <div class="flex justify-between mb-2"><span class="text-gray-300">Link Building</span> <span class="text-gray-500">80%</span>
+        </div>
+        <div class="skill-bar">
+         <div class="skill-progress animate-pulse-custom" style="width: 80%"></div>
+        </div>
+       </div>
+       <div>
+        <div class="flex justify-between mb-2"><span class="text-gray-300">Financial Analysis</span> <span class="text-gray-500">78%</span>
+        </div>
+        <div class="skill-bar">
+         <div class="skill-progress animate-pulse-custom" style="width: 78%"></div>
+        </div>
+       </div>
+       <div>
+        <div class="flex justify-between mb-2"><span class="text-gray-300">Excel / Accounting</span> <span class="text-gray-500">82%</span>
+        </div>
+        <div class="skill-bar">
+         <div class="skill-progress animate-pulse-custom" style="width: 82%"></div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section><!-- Contact Section -->
+  <section id="contact" class="section py-20 bg-gray-900">
+   <div class="max-w-6xl mx-auto px-4">
+    <div class="text-center mb-16">
+     <h2 class="text-4xl font-bold mb-4 text-gray-200">Get In Touch</h2>
+     <div class="w-20 h-1 bg-gradient-to-r from-purple-600 to-blue-600 mx-auto mb-6"></div>
+     <p class="text-gray-400 max-w-2xl mx-auto">Ready to start your next project? Let's work together to create something amazing</p>
+    </div>
+    <div class="grid md:grid-cols-2 gap-12">
+     <div>
+      <h3 class="text-2xl font-semibold mb-6 text-gray-200">Contact Information</h3>
+      <div class="space-y-4">
+       <div class="flex items-center">
+        <div class="w-12 h-12 bg-purple-900 rounded-lg flex items-center justify-center mr-4 animate-bounce-custom">
+         <svg class="w-6 h-6 text-purple-300" fill="currentColor" viewbox="0 0 24 24"><path d="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z" />
+         </svg>
+        </div>
+        <div>
+         <h4 class="font-semibold text-gray-200">Email</h4>
+         <p class="text-gray-400" id="contact-email">Harshkolawat@outlook.com</p>
+        </div>
+       </div>
+       <div class="flex items-center">
+        <div class="w-12 h-12 bg-purple-900 rounded-lg flex items-center justify-center mr-4 animate-bounce-custom">
+         <svg class="w-6 h-6 text-purple-300" fill="currentColor" viewbox="0 0 24 24"><path d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z" />
+         </svg>
+        </div>
+        <div>
+         <h4 class="font-semibold text-gray-200">Phone</h4>
+         <p class="text-gray-400" id="contact-phone">+91 (960) 251-1496</p>
+        </div>
+       </div>
+       <div class="flex items-center">
+        <div class="w-12 h-12 bg-purple-900 rounded-lg flex items-center justify-center mr-4 animate-bounce-custom">
+         <svg class="w-6 h-6 text-purple-300" fill="currentColor" viewbox="0 0 24 24"><path d="M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12,2Z" />
+         </svg>
+        </div>
+        <div>
+         <h4 class="font-semibold text-gray-200">Location</h4>
+         <p class="text-gray-400" id="contact-location">Alwar, Rajasthan (INDIA)</p>
+        </div>
+       </div>
+      </div>
+      <div class="mt-8">
+       <h4 class="font-semibold text-gray-200 mb-4">Follow Me</h4>
+       <div class="flex space-x-4"><a href="https://x.com/HarshKolawat?s=09" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-purple-600 hover:text-white transition-colors animate-pulse-custom">
+         <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
+         </svg></a> <a href="https://www.linkedin.com/in/harshkolawat?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-purple-600 hover:text-white transition-colors animate-pulse-custom">
+         <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+         </svg></a> <a href="https://pin.it/2kTS6snyf" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-purple-600 hover:text-white transition-colors animate-pulse-custom">
+         <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24c6.624 0 11.99-5.367 11.99-11.987C24.007 5.367 18.641.001 12.017.001z" />
+         </svg></a>
+       </div>
+      </div>
+     </div>
+     <div>
+      <form class="space-y-6" onsubmit="handleContactForm(event)">
+       <div><label class="block text-sm font-medium text-gray-300 mb-2">Name</label> <input type="text" required class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent text-gray-200" placeholder="Your Name">
+       </div>
+       <div><label class="block text-sm font-medium text-gray-300 mb-2">Email</label> <input type="email" required class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent text-gray-200" placeholder="your.email@example.com">
+       </div>
+       <div><label class="block text-sm font-medium text-gray-300 mb-2">Subject</label> <input type="text" required class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent text-gray-200" placeholder="Project Inquiry">
+       </div>
+       <div><label class="block text-sm font-medium text-gray-300 mb-2">Message</label> <textarea rows="5" required class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent text-gray-200" placeholder="Tell me about your project..."></textarea>
+       </div><button type="submit" class="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:from-purple-700 hover:to-blue-700 transition-colors animate-pulse-custom"> Send Message </button>
+      </form>
+     </div>
+    </div>
+   </div>
+  </section><!-- Footer -->
+  <footer class="bg-gray-950 text-white py-8 border-t border-gray-800">
+   <div class="max-w-6xl mx-auto px-4 text-center">
+    <p>© 2024 <span id="footer-name">Harsh Saini</span>. All rights reserved.</p>
+    <p class="text-gray-500 mt-2">Built with passion and creativity</p>
+    <img src="https://i.postimg.cc/D0TkwC2J/561454565.jpg" alt="Footer Logo" class="mx-auto mt-4 w-10 h-10 animate-rotate">
+   </div>
+  </footer>
+  <script>
+        // Default configuration
+        const defaultConfig = {
+            name: "Harsh saini",
+            title: "Data Science Student",
+            tagline: "Aspiring data scientist with hands-on experience in accounting and SEO optimization",
+            about_text: "I'm a dedicated student currently pursuing Data Science from UpGrad, with 1 year of practical experience in accounting and 2 years of expertise in SEO off-page optimization. I'm passionate about leveraging data to drive business insights and digital growth.",
+            email: "HarshKolawat@outlook.com",
+            phone: "+91 9602-511-496",
+            location: "Alwar, Rajasthan"
+        };
+
+        // Render function to update UI based on config
+        async function render(config) {
+            // Update navigation name
+            document.getElementById('nav-name').textContent = config.name || defaultConfig.name;
+            
+            // Update hero section
+            document.getElementById('hero-name').textContent = config.name || defaultConfig.name;
+            document.getElementById('hero-title').textContent = config.title || defaultConfig.title;
+            document.getElementById('hero-tagline').textContent = config.tagline || defaultConfig.tagline;
+            
+            // Update about section
+            document.getElementById('about-description').textContent = config.about_text || defaultConfig.about_text;
+            
+            // Update contact information
+            document.getElementById('contact-email').textContent = config.email || defaultConfig.email;
+            document.getElementById('contact-phone').textContent = config.phone || defaultConfig.phone;
+            document.getElementById('contact-location').textContent = config.location || defaultConfig.location;
+            
+            // Update footer
+            document.getElementById('footer-name').textContent = config.name || defaultConfig.name;
+        }
+
+        // Map config to edit panel values
+        function mapToEditPanelValues(config) {
+            return new Map([
+                ["name", config.name || defaultConfig.name],
+                ["title", config.title || defaultConfig.title],
+                ["tagline", config.tagline || defaultConfig.tagline],
+                ["about_text", config.about_text || defaultConfig.about_text],
+                ["email", config.email || defaultConfig.email],
+                ["phone", config.phone || defaultConfig.phone],
+                ["location", config.location || defaultConfig.location]
+            ]);
+        }
+
+        // Map config to capabilities
+        function mapToCapabilities(config) {
+            return {
+                recolorables: [],
+                borderables: [],
+                fontEditable: undefined,
+                fontSizeable: undefined
+            };
+        }
+
+        // Initialize Element SDK
+        if (window.elementSdk) {
+            window.elementSdk.init({
+                defaultConfig,
+                render,
+                mapToCapabilities,
+                mapToEditPanelValues
+            });
+        }
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+                // Close mobile menu if open
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+
+        // Contact form handler
+        function handleContactForm(event) {
+            event.preventDefault();
+            const form = event.target;
+            const formData = new FormData(form);
+            
+            // Show success message
+            const button = form.querySelector('button[type="submit"]');
+            const originalText = button.textContent;
+            button.textContent = 'Message Sent!';
+            button.style.background = 'linear-gradient(to right, #10b981, #059669)';
+            
+            // Reset form
+            form.reset();
+            
+            // Reset button after 3 seconds
+            setTimeout(() => {
+                button.textContent = originalText;
+                button.style.background = '';
+            }, 3000);
+        }
+
+        // Animate skill bars on scroll
+        function animateSkillBars() {
+            const skillBars = document.querySelectorAll('.skill-progress');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const width = entry.target.style.width;
+                        entry.target.style.width = '0%';
+                        setTimeout(() => {
+                            entry.target.style.width = width;
+                        }, 100);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            skillBars.forEach(bar => observer.observe(bar));
+        }
+
+        // Initialize animations
+        document.addEventListener('DOMContentLoaded', () => {
+            animateSkillBars();
+        });
+    </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98f00984d159c0e2',t:'MTc2MDUzODg2NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
